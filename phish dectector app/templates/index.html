@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}Login - Phish Shield{% endblock %}
+
+{% block content %}
+<div class="login-page">
+    <div class="login-info-panel">
+        <div class="info-content">
+            <h1>Welcome to Phish Shield</h1>
+            <p>Your first line of defense against email-based threats.</p>
+            <ul class="features-list">
+                <li class="feature-item">
+                    <i class="fas fa-search-dollar"></i>
+                    <div class="feature-text">
+                        <h3>Analyze Email Content</h3>
+                        <p>Paste email content to get an instant risk score and detailed analysis.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-file-signature"></i>
+                    <div class="feature-text">
+                        <h3>Identify Phishing Indicators</h3>
+                        <p>Learn why an email is flagged, with clear reasons and explanations.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-user-secret"></i>
+                    <div class="feature-text">
+                        <h3>Protect Your Identity</h3>
+                        <p>Secure your personal and corporate data from malicious actors.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-history"></i>
+                    <div class="feature-text">
+                        <h3>Secure & Private</h3>
+                        <p>Your data is processed securely and is never stored or shared.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="login-form-panel">
+        <div class="form-container">
+            <div class="shield-logo-container">
+                <img src="{{ url_for('static', filename='shield.png') }}" alt="Shield Logo" class="shield-logo">
+            </div>
+            <h2>User Login</h2>
+            <p>Please enter your credentials to proceed.</p>
+            <form action="{{ url_for('login') }}" method="post" novalidate>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="e.g.,elijah david" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="e.g., elijah123" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}Analysis Result - Phish Shield{% endblock %}
+
+{% block content %}
+<div class="result-container">
+    <header class="result-header">
+        <h1>Analysis Complete</h1>
+        <p>Here is the risk assessment for the email from <strong>{{ sender_name }}</strong>.</p>
+    </header>
+
+    <div class="result-summary">
+        <div class="result-score-card classification-{{ result.classification.lower() }}">
+            <div class="score-value">{{ result.score }}%</div>
+            <div class="score-label">Risk Score</div>
+        </div>
+        <div class="result-classification-card classification-{{ result.classification.lower() }}">
+            <div class="classification-value">{{ result.classification }}</div>
+            <div class="classification-label">Classification</div>
+        </div>
+    </div>
+
+    <div class="result-details">
+        <h2>Reasons for Classification</h2>
+        <ul class="reasons-list">
+            {% for reason in result.reasons %}
+                <li>
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>{{ reason }}</span>
+                </li>
+            {% else %}
+                <li>No specific reasons found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="result-email-content">
+        <h2>Analyzed Email Content</h2>
+        <pre class="email-content-box">{{ email_content }}</pre>
+    </div>
+    
+    <div class="result-actions">
+        <a href="{{ url_for('dashboard') }}" class="btn-secondary">
+            <i class="fas fa-search"></i> Analyze Another Email
+        </a>
+    </div>
+</div>
+{% endblock %} 
